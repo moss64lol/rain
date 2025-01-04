@@ -111,9 +111,9 @@ nav ul li a:hover {
 .memes-page .meme img,
 .memes-page .meme video {
     width: auto;
-    max-width: 500px;
+    max-width: 300px;
     height: auto;
-    max-height: 500px;
+    max-height: 300px;
     object-fit: contain;
     border-radius: 10px;
 }
