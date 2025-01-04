@@ -1,7 +1,6 @@
-
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff; /light blue/
+    background-color: #f0f8ff;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -9,10 +8,12 @@ body {
 
 header {
     padding: 40px 20px; 
-    background-image: url('cloud.png'); 
+    background-image: url('cloud.png');
     background-size: cover; 
-    color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-position: center;
+    color: black;
+    text-align: center;
+    box-shadow: none;
 }
 
 header h1 {
@@ -87,8 +88,6 @@ nav ul li a:hover {
     font-size: 1rem;
     color: #666;
 }
-
-
 
 .memes-page .memes-container {
     display: flex;
