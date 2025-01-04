@@ -9,7 +9,7 @@ body {
 header {
     padding: 40px 20px;
     background-image: url('cloud.png');
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 100vh;
@@ -35,7 +35,9 @@ nav ul {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
+    background-color: rgba(70, 130, 180, 0.8);
+    padding: 10px 0;
 }
 
 nav ul li {
@@ -108,9 +110,11 @@ nav ul li a:hover {
 
 .memes-page .meme img,
 .memes-page .meme video {
-    width: 100%;
+    width: auto;
     max-width: 500px;
     height: auto;
+    max-height: 500px;
+    object-fit: contain;
     border-radius: 10px;
 }
 
