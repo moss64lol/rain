@@ -120,6 +120,17 @@ nav ul li a:hover {
     color: #333;
 }
 
+.memes-page .meme img {
+    max-width: 100%;
+    height: auto;
+}
+
+.memes-page .meme img:hover,
+.memes-page .meme video:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
 @media (max-width: 768px) {
     .raindrop-container {
         flex-direction: column;
@@ -135,15 +146,29 @@ nav ul li a:hover {
     }
 }
 
-.memes-page .meme img:hover,
-.memes-page .meme video:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
-}
-
 footer {
     background-color: #4682b4;
     color: white;
     padding: 10px;
     text-align: center;
+}
+
+.post-content {
+    display: inline-block;
+    padding: 20px;
+    border: 2px solid #4682b4;
+    background-color: white;
+    margin: 20px;
+    max-width: 80%;
+    text-align: left;
+}
+
+.post-content h2 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.post-content p {
+    font-size: 1.2rem;
+    color: #666;
 }
