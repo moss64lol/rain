@@ -53,77 +53,38 @@ nav ul li a:hover {
     background-color: #5f9ea0;
 }
 
-.raindrop-container {
+.memes-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    margin: 80px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
 }
 
-.raindrop {
+.meme {
     text-align: center;
+    flex: 1 1 calc(50% - 20px);
+    max-width: 300px;
+    margin: 10px;
 }
 
-.raindrop img {
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.raindrop img:hover {
-    transform: scale(1.1);
-}
-
-.raindrop h2 {
-    margin: 10px 0 5px;
-    font-size: 1.5rem;
-    color: #333;
-}
-
-.raindrop p {
-    margin: 0;
-    font-size: 1rem;
-    color: #666;
-}
-
-/* Memes Section Styling */
-.memes-page .memes-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    margin: 30px 0;
-    padding: 0 10px; /* Added padding for mobile */
-}
-
-.memes-page .meme {
-    text-align: center;
+.meme img,
+.meme video {
     width: 100%;
-    max-width: 500px; /* Maximum width for desktop view */
-    margin: 20px 0;
-}
-
-.memes-page .meme img,
-.memes-page .meme video {
-    width: 100%; /* Makes sure the image/video takes up full width */
-    height: auto; /* Keeps the aspect ratio intact */
+    height: auto;
     border-radius: 10px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
-.memes-page .meme p {
+.meme p {
     margin-top: 10px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #333;
 }
-
 
 @media (max-width: 768px) {
-    .memes-page .meme {
-        max-width: 100%; 
+    .meme {
+        flex: 1 1 100%;
     }
 
     header h1 {
@@ -136,9 +97,6 @@ nav ul li a:hover {
 
     nav ul {
         flex-direction: column;
-    }
-
-    nav ul li {
-        margin-bottom: 10px;
+        gap: 10px;
     }
 }
