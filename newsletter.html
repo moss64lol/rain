@@ -15,6 +15,7 @@
                 <li><a href="games.html">Games</a></li>
                 <li><a href="mental-health.html">Mental Health</a></li>
                 <li><a href="about.html">About</a></li>
+                <li><a href="#" onclick="toggleAuthModal()">Register/Login</a></li>
             </ul>
         </nav>
         <h1>Rain Village (Newsletter)</h1>
@@ -27,7 +28,7 @@
                 <img src="raindrop1.png" alt="Raindrop 1">
             </a>
             <h2>Is the word "incel" considered derogatory?</h2>
-            <p>Exploring the meaning, effects and the controversional connotations of the word.</p>
+            <p>Exploring the meaning, effects, and the controversial connotations of the word.</p>
         </div>
         <div class="raindrop">
             <a href="/newsletter/hyp.html">
@@ -44,5 +45,22 @@
             <p>WIP</p>
         </div>
     </div>
+
+
+
+    
+    <div id="auth-modal" style="display: none;">
+        <div class="modal-content">
+            <h2 id="auth-title">Register</h2>
+            <input type="text" id="auth-username" placeholder="Name/Username">
+            <input type="password" id="auth-password" placeholder="Password">
+            <input type="password" id="auth-confirm-password" style="display: none;" placeholder="Confirm Password">
+            <button onclick="handleAuth()">Submit</button>
+            <p id="auth-error"></p>
+            <a href="#" id="toggle-auth-link" onclick="toggleAuthMode()">I already have an account</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
