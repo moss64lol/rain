@@ -1,298 +1,132 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Chess Board</title>
-      <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-     
-     <div class="container">
-      <div class="buttonContainer">
-        <div>
-          <div id="levelLabel">
-            <span>Level:</span>
-         </div>
-       
-        <select id="level">
-          <option value="1">Level 1</option>
-          <option value="2">Level 2</option>
-          <option value="3">Level 3</option>
-          <option value="4">Level 4</option>
-          <option value="5">Level 5</option>
-          <option value="6">Level 6</option>
-          <option value="7">Level 7</option>
-          <option value="8">Level 8</option>
-          <option value="9">Level 9</option>
-          <option value="10">Level 10</option>
-        </select>
-      </div>
-      <div>
-        <button id="newGame">New Game</button>
-      </div>
-      <div>
-        <button id="switchSides">Switch Sides</button>
-      </div>
-     </div>
-   
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess - Rain Village</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        h1 {
+            text-align: center;
+        }
+        .chess-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 20px;
+            gap: 20px;
+        }
+        #csoPvcCon {
+            width: 420px;
+        }
+        .ai-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 300px;
+        }
+        .ai-profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .ai-profile .comments {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            min-height: 100px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Newsletter</a></li>
+                <li><a href="memes.html">Memes</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="mental-health.html">Mental Health</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <h1>Rain Village (Chess)</h1>
+    </header>
 
-    <div class="chessBoard">        
-      <!-- Add the pawn div element -->
-      <div class="square white">
-        <div class="piece rook" color="black"  >
-            <img src="Black-Rook.png" alt="Rook" >
-          </div>
-      </div>
-      <div class="square black">
-        <div class="piece knight" color="black" >
-            <img src="Black-Knight.png" alt="pawn" >
-          </div>
-      </div>
-      <div class="square white">
-        <div class="piece bishop" color="black" >
-            <img src="Black-Bishop.png" alt="pawn" >
-          </div>
-      </div>
-      <div class="square black">
-        <div class="piece queen" color="black" >
-            <img src="Black-Queen.png" alt="Queen" >
-          </div>
-      </div>
-      <div class="square white">
-        <div class="piece king" color="black" >
-            <img src="Black-King.png" alt="King" >
-          </div>
-      </div>
-      <div class="square black">
-        <div class="piece bishop" color="black" >
-            <img src="Black-Bishop.png" alt="Bishop" >
-          </div>
-      </div>
-      <div class="square white">
-        <div class="piece knight" color="black">
-            <img src="Black-Knight.png" alt="Knight" >
-          </div>
-      </div>
-      <div class="square black">
-        <div class="coordinate rank whiteText">8</div>
+    <div class="chess-container">
 
-        <div class="piece rook" color="black" >
-            <img src="Black-Rook.png" alt="Rook" >
-          </div>
-      </div>
-     <!-- ------------------------------------------------------------------------- -->
+      
+      <div id="csoPvcCon"></div>
 
-      <div class="square black">
-        <div class="piece pawn" color="black"  >
-            <img src="Black-Pawn.png" alt="pawn" >
-          </div>
-
-      </div>
-      <div class="square white">
-        <div class="piece pawn" color="black" >
-            <img src="Black-Pawn.png" alt="pawn" >
-          </div>
-
-      </div>
-      <div class="square black">
-        <div class="piece pawn" color="black" >
-            <img src="Black-Pawn.png" alt="pawn" >
-          </div>
-
-      </div>
-      <div class="square white">
-        <div class="piece pawn" color="black" >
-            <img src="Black-Pawn.png" alt="pawn" >
-          </div>
-
-      </div>
-      <div class="square black">
-        <div class="piece pawn" color="black"  >
-            <img src="Black-Pawn.png" alt="pawn" >
-          </div>
-
-      </div>
-      <div class="square white">
-        <div class="piece pawn" color="black"  >
-            <img src="Black-Pawn.png" alt="pawn">
-          </div>
-
-      </div>
-      <div class="square black">
-        <div class="piece pawn" color="black"  >
-            <img src="Black-Pawn.png" alt="pawn" >
-          </div>
-
-      </div>
-      <div class="square white">
-        <div class="coordinate rank blackText">7</div>
-
-        <div class="piece pawn" color="black"  >
-            <img src="Black-Pawn.png" alt="pawn" >
-          </div>
-
-      </div>
-    <!-- ------------------------------------------------------------------------- -->
-      <div class="square white"></div>
-      <div class="square black"></div>
-      <div class="square white"></div>
-      <div class="square black"></div>
-      <div class="square white"></div>
-      <div class="square black"></div>
-      <div class="square white"></div>
-      <div class="square black">
-        <div class="coordinate rank whiteText">6</div>
-
-      </div>
-    <!-- ------------------------------------------------------------------------- -->
-
-      <div class="square black"></div>
-      <div class="square white"></div>
-      <div class="square black"></div>
-      <div class="square white"></div>
-      <div class="square black"></div>
-      <div class="square white"></div>
-      <div class="square black"></div>
-      <div class="square white">
-        <div class="coordinate rank blackText">5</div>
-
-      </div>
-    <!-- ------------------------------------------------------------------------- -->
-
-      <div class="square white"></div>
-      <div class="square black"></div>
-      <div class="square white"></div>
-      <div class="square black"></div>
-      <div class="square white"></div>
-      <div class="square black"></div>
-      <div class="square white"></div>
-      <div class="square black">
-        <div class="coordinate rank whiteText">4</div>
-
-      </div>
-    <!-- ------------------------------------------------------------------------- -->
-
-      <div class="square black"></div>
-      <div class="square white"></div>
-      <div class="square black"></div>
-      <div class="square white"></div>
-      <div class="square black"></div>
-      <div class="square white"></div>
-      <div class="square black"></div>
-      <div class="square white">
-        <div class="coordinate rank blackText">3</div>
-      </div>
-    <!-- ------------------------------------------------------------------------- -->
-
-      <div class="square white">
-        <div class="piece pawn" color="white" >
-            <img src="white-pawn.png" alt="pawn" >
-          </div>
-      </div>
-      <div class="square black">
-        <div class="piece pawn" color="white"  >
-            <img src="white-pawn.png" alt="pawn" >
-          </div>
-      </div>
-      <div class="square white">
-        <div class="piece pawn" color="white">
-            <img src="white-pawn.png" alt="pawn" >
-          </div>
-      </div>
-      <div class="square black">
-        <div class="piece pawn" color="white" >
-            <img src="white-pawn.png" alt="pawn" >
-          </div>
-      </div>
-      <div class="square white">
-        <div class="piece pawn" color="white" >
-            <img src="white-pawn.png" alt="pawn" >
-          </div>
-      </div>
-      <div class="square black">
-        <div class="piece pawn" color="white" >
-            <img src="white-pawn.png" alt="pawn" >
-          </div>
-      </div>
-      <div class="square white">
-        <div class="piece pawn" color="white" >
-            <img src="white-pawn.png" alt="pawn" >
-          </div>
-      </div>
-      <div class="square black">
-        <div class="coordinate rank whiteText">2</div>
-
-        <div class="piece pawn" color="white" >
-            <img src="white-pawn.png" alt="pawn" >
-          </div>
-      </div>
-    <!-- ------------------------------------------------------------------------- -->
-
-      <div class="square black">
-        <div class="coordinate whiteText">a</div>
-
-        <div class="piece rook" color="white">
-            <img src="White-Rook.png" alt="Rook" >
-           </div>
-      </div>
-      <div class="square white"> 
-        <div class="coordinate blackText">b</div>
-
-        <div class="piece knight" color="white">
-            <img src="White-Knight.png" alt="Knight" >
-           </div>
-    </div>
-      <div class="square black">
-        <div class="coordinate whiteText">c</div>
-
-        <div class="piece bishop" color="white">
-            <img src="White-Bishop.png" alt="Bishop">
-           </div>
-      </div>
-      <div class="square white">
-        <div class="coordinate blackText">d</div>
-
-        <div class="piece queen" color="white" >
-            <img src="White-Queen.png" alt="Queen" >
-           </div>
-      </div>
-      <div class="square black">
-        <div class="coordinate whiteText">e</div>
-
-        <div class="piece king" color="white">
-            <img src="White-King.png" alt="King">
+        <div class="ai-profile">
+            <img src="pfp.png" alt="Rain's Profile Picture">
+            <h3>Rain</h3>
+            <div class="comments" id="comments">
+                <p>Welcome to the game! Let’s see what you’ve got!</p>
+            </div>
         </div>
-      </div>
-      <div class="square white">
-        <div class="coordinate blackText">f</div>
-        <div class="piece bishop" color="white" >
-            <img src="White-Bishop.png" alt="Bishop" >
-           </div>
-      </div>
-      <div class="square black">
-        <div class="coordinate whiteText">g</div>
-
-        <div class="piece knight" color="white" >
-            <img src="White-Knight.png" alt="Knight">
-           </div>
-      </div>
-      <div class="square white">
-        <div class="coordinate rank blackText">1</div>
-        <div class="coordinate blackText">h</div>     
-        <div class="piece rook" color="white" >
-            <img src="White-Rook.png" alt="Rook" >
-           </div>
-      </div>
-      <div id="alert">
-        Draw 
-       </div>
     </div>
 
-  </div>
- 
+    <script type="text/javascript" src="https://www.chessstrategyonline.com/js/widgets.min.js"></script>
+    <script>
 
- 
-    
+      csoPlayVsComputer({
+            boardStyle: "default",
+            pieceStyle: "uscf",
+            showCoordinates: true,
+            width: 420
+        });
 
-    <script src="main.js"></script>
-  </body>
+        const comments = document.getElementById("comments");
+
+
+      function addComment(text) {
+            const comment = document.createElement("p");
+            comment.textContent = text;
+            comments.appendChild(comment);
+            comments.scrollTop = comments.scrollHeight; 
+        }
+
+        const aiPhrases = [
+            "Nice opening!",
+            "You messed up, G.",
+            "Checkmate!",
+            "Interesting strategy...",
+            "Are you sure about that move?",
+            "I see what you're trying to do!"
+        ];
+
+        setInterval(() => {
+            const randomComment = aiPhrases[Math.floor(Math.random() * aiPhrases.length)];
+            addComment(randomComment);
+        }, Math.random() * 5000 + 5000);
+    </script>
+</body>
 </html>
