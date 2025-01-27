@@ -97,15 +97,21 @@
         Your browser does not support the audio element.
     </audio>
 
-    <script src="https://unpkg.com/@chriso/chessboardjs@1.0.0/dist/chessboard.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/stockfish.js"></script>
+
+    <script src="js/chessboard-1.0.0.min.js"></script>
+    <!-- Use Local Chess.js -->
+    <script src="js/chess.js"></script>
+    <!-- Use Local Stockfish.js -->
+    <script src="js/stockfish.js"></script>
     <script>
         var board = ChessBoard('chessboard', {
             draggable: true,
             dropOffBoard: 'trash',
-            sparePieces: true
+            sparePieces: true,
+            onDrop: onDrop
         });
 
+        const game = new Chess();
         const comments = document.getElementById("comments");
 
         function addComment(text) {
@@ -115,32 +121,45 @@
             comments.scrollTop = comments.scrollHeight;
         }
 
-        const aiPhrases = [
-            "Nice opening!",
-            "You messed up, G.",
-            "Checkmate!",
-            "Interesting strategy...",
-            "Are you sure about that move?",
-            "I see what you're trying to do!"
-        ];
-
-        setInterval(() => {
-            const randomComment = aiPhrases[Math.floor(Math.random() * aiPhrases.length)];
-            addComment(randomComment);
-        }, Math.random() * 5000 + 5000);
-
-        const stockfish = new Worker('https://stockfish.herokuapp.com/stockfish.js');
+        const stockfish = new Worker('js/stockfish.js');
 
         stockfish.onmessage = function (event) {
             if (event.data === 'uciok') {
                 stockfish.postMessage('isready');
             } else if (event.data.includes('bestmove')) {
                 const move = event.data.split(' ')[1];
-                board.move(move);
+                game.move(move);
+                board.position(game.fen());
                 addComment(`Rain suggests: ${move}`);
-                analyzeGame(board.fen());
+                analyzeGame(game.fen());
             }
         };
+
+        function onDrop(source, target) {
+            const move = game.move({
+                from: source,
+                to: target,
+                promotion: 'q' // always promote to a queen for simplicity
+            });
+
+            if (move === null) return 'snapback';
+
+            board.position(game.fen());
+            addComment(`You moved: ${source} to ${target}`);
+
+            if (game.in_checkmate()) {
+                addComment("Checkmate! You win!");
+                return;
+            }
+
+            if (game.in_draw()) {
+                addComment("It's a draw!");
+                return;
+            }
+
+            stockfish.postMessage('position fen ' + game.fen());
+            stockfish.postMessage('go depth 15');
+        }
 
         function analyzeGame(fen) {
             fetch('https://lichess.org/api/board/game/analyses', {
@@ -161,6 +180,7 @@
         }
 
         function startNewGame() {
+            game.reset();
             board.start();
             addComment("Let’s play! Your move...");
         }
