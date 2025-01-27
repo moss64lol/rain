@@ -97,12 +97,11 @@
         Your browser does not support the audio element.
     </audio>
 
-
-    <script src="js/chessboard-1.0.0.min.js"></script>
-    <!-- Use Local Chess.js -->
-    <script src="js/chess.js"></script>
-    <!-- Use Local Stockfish.js -->
-    <script src="js/stockfish.js"></script>
+    <script src="chessboard-1.0.0.min.js"></script>
+    
+    <script src="chess.js"></script>
+    
+    <script src="stockfish.js"></script>
     <script>
         var board = ChessBoard('chessboard', {
             draggable: true,
@@ -121,7 +120,7 @@
             comments.scrollTop = comments.scrollHeight;
         }
 
-        const stockfish = new Worker('js/stockfish.js');
+        const stockfish = new Worker('stockfish.js');
 
         stockfish.onmessage = function (event) {
             if (event.data === 'uciok') {
