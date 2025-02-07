@@ -44,6 +44,7 @@
         #chessboard {
             width: 480px;
             height: 480px;
+            border: 2px solid black;
         }
         .ai-profile {
             display: flex;
@@ -102,6 +103,7 @@
             position: 'start',
             draggable: true,
             onDrop: handleMove,
+            pieceTheme: 'wikipedia/{piece}.png',
         });
 
         const game = new Chess();
@@ -139,7 +141,9 @@
     <script>
         const audio = document.getElementById('background-music');
         audio.play();
+
         window.addEventListener('load', () => {
+            audio.pause();
             audio.currentTime = 0;
             audio.play();
         });
