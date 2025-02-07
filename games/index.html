@@ -140,11 +140,18 @@
 
     <script>
         const audio = document.getElementById('background-music');
-        audio.play();
+
+        audio.play().catch(() => {
+            console.log("Autoplay blocked please interact with website to commence the music");
+        });
 
         window.addEventListener('load', () => {
             audio.pause();
             audio.currentTime = 0;
+            audio.play();
+        });
+
+        document.addEventListener('click', () => {
             audio.play();
         });
     </script>
