@@ -1,67 +1,44 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let totalSeconds = 0;
-    let userAddedTime = {};
-    const maxUserTime = 3 * 3600; 
-    const maxDailyTime = new Date().getDay() === 0 || new Date().getDay() === 6 ? 10 * 3600 : 6 * 3600; // 10h weekends, 6h weekdays
-    const endTime = 12 * 3600; 
-
-    const totalTimeDisplay = document.getElementById("total-time");
-    const timeForm = document.getElementById("add-time-form");
-    const timeLimitMsg = document.getElementById("time-limit-message");
-    const logContainer = document.createElement("div");
-    logContainer.id = "log-container";
-    document.body.appendChild(logContainer);
+    const totalTimeElement = document.getElementById("total-time");
+    const form = document.getElementById("add-time-form");
+    const logContainer = document.getElementById("log-container");
+    let guestCount = localStorage.getItem("guestCount") || 1;
+    let totalSeconds = parseInt(localStorage.getItem("totalSeconds")) || 0;
 
     function formatTime(seconds) {
-        let h = Math.floor(seconds / 3600);
-        let m = Math.floor((seconds % 3600) / 60);
-        let s = seconds % 60;
-        return `${h} hours ${m} minutes ${s} seconds`;
+        let hrs = Math.floor(seconds / 3600);
+        let mins = Math.floor((seconds % 3600) / 60);
+        let secs = seconds % 60;
+        return `${hrs} hours ${mins} minutes ${secs} seconds`;
     }
 
-    function updateTimeDisplay() {
-        totalTimeDisplay.textContent = formatTime(totalSeconds);
+    function updateTotalTime() {
+        totalTimeElement.textContent = formatTime(totalSeconds);
+        localStorage.setItem("totalSeconds", totalSeconds);
     }
 
-    function addToLog(user, time) {
-        const entry = document.createElement("p");
-        entry.textContent = `${user} added ${formatTime(time)}`;
-        logContainer.appendChild(entry);
+    function addLogEntry(guestName, addedSeconds) {
+        let logEntry = document.createElement("p");
+        logEntry.textContent = `${guestName} added ${formatTime(addedSeconds)}`;
+        logContainer.appendChild(logEntry);
     }
 
-    timeForm.addEventListener("submit", function (event) {
+    form.addEventListener("submit", function (event) {
         event.preventDefault();
-        let user = "Guest"; 
-        let addedHours = parseInt(document.getElementById("hours").value) || 0;
-        let addedMinutes = parseInt(document.getElementById("minutes").value) || 0;
-        let addedSeconds = parseInt(document.getElementById("seconds").value) || 0;
-        let addedTime = addedHours * 3600 + addedMinutes * 60 + addedSeconds;
-
-        if (addedTime <= 0) {
-            timeLimitMsg.textContent = "Please add a valid amount of time";
-            return;
+        
+        let hours = parseInt(document.getElementById("hours").value) || 0;
+        let minutes = parseInt(document.getElementById("minutes").value) || 0;
+        let seconds = parseInt(document.getElementById("seconds").value) || 0;
+        let userName = prompt("Enter your name (or leave blank for Guest)") || `Guest${guestCount}`;
+        
+        let addedSeconds = hours * 3600 + minutes * 60 + seconds;
+        if (addedSeconds > 0) {
+            totalSeconds += addedSeconds;
+            updateTotalTime();
+            addLogEntry(userName, addedSeconds);
+            localStorage.setItem("guestCount", parseInt(guestCount) + 1);
         }
-
-        let userTime = userAddedTime[user] || 0;
-        if (userTime + addedTime > maxUserTime) {
-            timeLimitMsg.textContent = "You have exceeded the limit";
-            return;
-        }
-
-        if (totalSeconds + addedTime > maxDailyTime) {
-            timeLimitMsg.textContent = "Today's maximum revision time has been reached";
-            return;
-        }
-
-        userAddedTime[user] = userTime + addedTime;
-        totalSeconds += addedTime;
-        updateTimeDisplay();
-        addToLog(user, addedTime);
-        timeLimitMsg.textContent = "";
     });
-
-    updateTimeDisplay();
-
-    const music = document.getElementById("background-music");
-    music.play().catch(() => console.log("Autoplay prevented, user interaction needed"));
+    
+    updateTotalTime();
 });
