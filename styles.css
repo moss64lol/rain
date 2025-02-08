@@ -53,33 +53,62 @@ nav ul li a:hover {
     background-color: #5f9ea0;
 }
 
-.memes-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+.timer-container {
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
-}
-
-.meme {
-    text-align: center;
-    flex: 1 1 100%; 
-    max-width: 300px;
-    margin: 10px;
-}
-
-.meme img,
-.meme video {
-    width: 100%;
-    height: auto;
+    background-color: white;
     border-radius: 10px;
-    object-fit: cover;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.meme p {
+#total-time {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#add-time-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+#add-time-form label {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+#add-time-form input {
+    width: 60px;
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#add-time-form button {
+    padding: 10px 20px;
+    background-color: #4682b4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#add-time-form button:hover {
+    background-color: #5f9ea0;
+}
+
+#time-limit-message {
+    color: red;
     margin-top: 10px;
     font-size: 1rem;
-    color: #333;
 }
 
 /*raindrops all same size*/
@@ -92,10 +121,6 @@ nav ul li a:hover {
 
 /* mobile support */
 @media (max-width: 768px) {
-    .meme {
-        flex: 1 1 100%; 
-    }
-
     header h1 {
         font-size: 2rem;
     }
@@ -105,14 +130,14 @@ nav ul li a:hover {
     }
 
     nav ul {
-        flex-direction: row; 
-        justify-content: space-between; 
-        gap: 10px; 
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 10px;
     }
 
     nav ul li {
-        flex: 1 1 30%; 
-        margin-bottom: 10px; 
+        flex: 1 1 30%;
+        margin-bottom: 10px;
     }
 
     nav ul li a {
@@ -121,11 +146,27 @@ nav ul li a:hover {
         display: block;
         text-align: center;
     }
-}
 
+    .timer-container {
+        padding: 15px;
+    }
+
+    #total-time {
+        font-size: 1.5rem;
+    }
+
+    #add-time-form input {
+        width: 50px;
+    }
+
+    #add-time-form button {
+        padding: 8px 16px;
+        font-size: 1rem;
+    }
+}
 
 @media (min-width: 1024px) {
     .meme {
-        flex: 1 1 100%; 
+        flex: 1 1 100%;
     }
 }
