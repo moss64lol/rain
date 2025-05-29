@@ -1,159 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess Game - Rain Village</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-        }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        nav ul li {
-            margin-right: 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
-        h1 {
-            text-align: center;
-        }
-        .chess-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            margin: 20px;
-            gap: 20px;
-        }
-        #chessboard {
-            width: 480px;
-            height: 480px;
-            border: 2px solid black;
-        }
-        .ai-profile {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 300px;
-        }
-        .ai-profile img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-        .ai-profile .comments {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
-            width: 100%;
-            min-height: 100px;
-            overflow-y: auto;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chess Game - Rain Village</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin-right: 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .chess-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 20px;
+      gap: 20px;
+    }
+
+    .dancing-gif {
+      width: 480px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .ai-profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 300px;
+    }
+
+    .ai-profile img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .ai-profile .comments {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      width: 100%;
+      min-height: 100px;
+      overflow-y: auto;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/index.html">Newsletter</a></li>
-                <li><a href="/memes.html">Memes</a></li>
-                <li><a href="/games.html">Games</a></li>
-                <li><a href="/mental-health.html">Mental Health</a></li>
-                <li><a href="/about.html">About</a></li>
-            </ul>
-        </nav>
-        <h1>Rain Village (Chess)</h1>
-    </header>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Newsletter</a></li>
+        <li><a href="/memes.html">Memes</a></li>
+        <li><a href="/games.html">Games</a></li>
+        <li><a href="/mental-health.html">Mental Health</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+    <h1>Rain Village (Chess)</h1>
+  </header>
 
-    <div class="chess-container">
-        <div id="chessboard"></div>
-        <div class="ai-profile">
-            <img src="pfp.png" alt="Rain's Profile Picture">
-            <h3>Rain</h3>
-            <div class="comments" id="comments">
-                <p>UR TRASH AT CHESS</p>
-            </div>
-        </div>
+  <div class="chess-container">
+    <img src="dancing.gif" alt="Dancing Meme" class="dancing-gif" />
+
+    <div class="ai-profile">
+      <img src="pfp.png" alt="Rain's Profile Picture" />
+      <h3>Rain</h3>
+      <div class="comments" id="comments">
+        <p>UR TRASH AT CHESS</p>
+      </div>
     </div>
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/stockfish.wasm"></script>
+  <audio id="background-music" autoplay loop>
+    <source src="music.mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
 
-    <script>
-        const board = Chessboard('chessboard', {
-            position: 'start',
-            draggable: true,
-            onDrop: handleMove,
-            pieceTheme: 'wikipedia/{piece}.png',
-        });
+  <script>
+    const audio = document.getElementById('background-music');
+    audio.play().catch(() => {
+      console.log("Autoplay blocked please interact with website to commence the music");
+    });
 
-        const game = new Chess();
-        const stockfish = new Worker('https://cdn.jsdelivr.net/npm/stockfish.wasm/stockfish.js');
+    window.addEventListener('load', () => {
+      audio.pause();
+      audio.currentTime = 0;
+      audio.play();
+    });
 
-        function handleMove(source, target) {
-            const move = game.move({ from: source, to: target, promotion: 'q' });
-            if (move === null) return 'snapback';
-            updateBoard();
-            analyzePosition();
-            generateComment();
-        }
-
-        function updateBoard() {
-            board.position(game.fen());
-        }
-
-        function analyzePosition() {
-            stockfish.postMessage('uci');
-            stockfish.postMessage(`position fen ${game.fen()}`);
-            stockfish.postMessage('go depth 15');
-        }
-
-        function generateComment() {
-            const commentsDiv = document.getElementById('comments');
-            commentsDiv.innerHTML = `<p>AI Comment: Analyzing move...</p>`;
-        }
-    </script>
-
-    <audio id="background-music" autoplay loop>
-        <source src="music.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
-
-    <script>
-        const audio = document.getElementById('background-music');
-
-        audio.play().catch(() => {
-            console.log("Autoplay blocked please interact with website to commence the music");
-        });
-
-        window.addEventListener('load', () => {
-            audio.pause();
-            audio.currentTime = 0;
-            audio.play();
-        });
-
-        document.addEventListener('click', () => {
-            audio.play();
-        });
-    </script>
+    document.addEventListener('click', () => {
+      audio.play();
+    });
+  </script>
 </body>
 </html>
