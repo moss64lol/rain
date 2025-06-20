@@ -11,10 +11,38 @@
             color: white;
             padding: 20px;
             margin: 20px auto;
-            max-width: 600px;
+            max-width: 800px;
             border-radius: 10px;
             text-align: center;
             font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+        }
+
+        th, td {
+            border: 1px solid #666;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #444;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #333;
+            color: white;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #222;
+            color: white;
         }
     </style>
 </head>
@@ -40,6 +68,53 @@
     <div class="message-box">
         <p>I'm probs gonna work on this website over the summer to improve my skills as I'm doing computer science at university (if I even get in 😢)</p>
     </div>
+
+    <div class="message-box">
+        <h2>Exams are done yayayaya here is my computer science plan over the summer</h2>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Week</th>
+                <th>Topic</th>
+                <th>Focus</th>
+                <th>Resources</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1–2</td>
+                <td><strong>Python Basics</strong></td>
+                <td>Variables, loops, functions</td>
+                <td><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank">freeCodeCamp Python</a></td>
+            </tr>
+            <tr>
+                <td>3–4</td>
+                <td><strong>Git + GitHub</strong></td>
+                <td>Version control, commits, branches</td>
+                <td>
+                    <a href="https://learngitbranching.js.org" target="_blank">learngitbranching.js.org</a>,
+                    <a href="https://docs.github.com/en/get-started" target="_blank">GitHub Docs</a>
+                </td>
+            </tr>
+            <tr>
+                <td>5–6</td>
+                <td><strong>Problem Solving</strong></td>
+                <td>LeetCode + logic puzzles</td>
+                <td>
+                    <a href="https://leetcode.com/problemset/all/?difficulty=Easy" target="_blank">LeetCode Easy</a>,
+                    <a href="https://exercism.io" target="_blank">Exercism.io</a>
+                </td>
+            </tr>
+            <tr>
+                <td>7–8</td>
+                <td><strong>Mini Project</strong></td>
+                <td>To-do app, web scraper, quiz game</td>
+                <td>Python + Flask, deploy on GitHub</td>
+            </tr>
+        </tbody>
+    </table>
 
     <audio id="background-music" loop>
         <source src="music.mp3" type="audio/mpeg">
