@@ -46,174 +46,59 @@ nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.4);
 }
 
-.timer-container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#total-time {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #2575fc;
-}
-
-#add-time-form {
+.raindrop-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
     align-items: center;
+    gap: 40px;
+    margin: 40px auto;
+    max-width: 400px;
 }
 
-#add-time-form input {
-    width: 60px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.raindrop-item {
+    text-decoration: none;
+    color: inherit;
     text-align: center;
+    width: 100%;
 }
 
-#add-time-form button {
-    padding: 12px 20px;
-    background-color: #2575fc;
-    color: white;
+.raindrop-item img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    display: block;
     border: none;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    background: none;
 }
 
-#add-time-form button:hover {
-    background-color: #6a11cb;
+.raindrop-item h3 {
+    margin: 10px 0 5px 0;
+    font-size: 1.4rem;
+    color: #222;
 }
 
-#time-limit-message {
-    color: red;
-    margin-top: 10px;
+.raindrop-item p {
+    margin: 0;
     font-size: 1rem;
+    color: #666;
 }
 
-#log-container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 15px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: left;
-}
-
-#log-container p {
-    font-size: 1rem;
-    padding: 5px;
-    border-bottom: 1px solid #ccc;
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #111;
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 60px;
 }
 
 @media (max-width: 768px) {
     header h1 {
         font-size: 2rem;
     }
-    
+
     nav ul {
         flex-wrap: wrap;
         justify-content: center;
     }
-
-    .timer-container, #log-container {
-        width: 90%;
-    }
-}
-
-
-
-/* mobile support */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem;
-    }
-
-    header p {
-        font-size: 1rem;
-    }
-
-    nav ul {
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 10px;
-    }
-
-    nav ul li {
-        flex: 1 1 30%;
-        margin-bottom: 10px;
-    }
-
-    nav ul li a {
-        font-size: 1.2rem;
-        padding: 15px 25px;
-        display: block;
-        text-align: center;
-    }
-
-    .timer-container {
-        padding: 15px;
-    }
-
-    #total-time {
-        font-size: 1.5rem;
-    }
-
-    #add-time-form input {
-        width: 50px;
-    }
-
-    #add-time-form button {
-        padding: 8px 16px;
-        font-size: 1rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .meme {
-        flex: 1 1 100%;
-    }
-}
-
-
-.raindrop-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  margin: 40px auto;
-  max-width: 400px;
-}
-
-.raindrop-item {
-  text-decoration: none;
-  color: inherit;
-  text-align: center;
-}
-
-.raindrop-item img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border: none;
-  background: none;
-}
-
-.raindrop-item h3 {
-  margin: 10px 0 5px 0;
-  font-size: 1.4rem;
-}
-
-.raindrop-item p {
-  margin: 0;
-  font-size: 1rem;
-  color: #666;
 }
