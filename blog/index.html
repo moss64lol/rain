@@ -1,1 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rain Village - Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
+        header {
+            background-color: #222;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            margin-top: 10px;
+        }
+
+        .blog-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .blog-post {
+            background-color: #222;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            width: 280px;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-post img {
+            width: 100%;
+            border-radius: 12px;
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-post h3 {
+            margin: 15px 0 10px;
+            font-size: 1.3em;
+        }
+
+        .blog-post p {
+            color: #ccc;
+            font-size: 0.95em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #111;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="diary.html">Diary</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="mental-health.html">Mental Health</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <h1>Rain Village Blog</h1>
+    </header>
+
+    <section class="blog-container">
+        <a href="/games/raindrop1.html" class="blog-post">
+            <img src="raindrop1.png" alt="Raindrop 1">
+            <h3>Dodgy Driving Instructor</h3>
+            <p>Dodgy Drving Instructor...</p>
+        </a>
+
+        <a href="/games/raindrop2.html" class="blog-post">
+            <img src="raindrop2.png" alt="Raindrop 2">
+            <h3>...</h3>
+            <p>...</p>
+        </a>
+
+        <a href="/games/raindrop3.html" class="blog-post">
+            <img src="raindrop3.png" alt="Raindrop 3">
+            <h3>...</h3>
+            <p>...</p>
+        </a>
+    </section>
+
+    <footer>
+        &copy; 2025 Rain Village. All rights reserved.
+    </footer>
+</body>
+</html>
