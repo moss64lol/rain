@@ -1,0 +1,15 @@
+# .staticman.yml
+comments:
+  allowedFields: ["name", "email", "message"]
+  requiredFields: ["name", "message"]
+  branch: "main"
+  format: "yaml"
+  path: "data/comments/{YYYY}-{MM}-{DD}-{HHmmss}"
+  generatedFields:
+    date:
+      type: date
+      options:
+        format: iso8601
+  moderation: false
+  name: "Comments"
+  commitMessage: "New comment submitted"
